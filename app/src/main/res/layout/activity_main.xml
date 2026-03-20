@@ -5,9 +5,7 @@
     android:orientation="vertical"
     android:background="#0A0800">
 
-    <!-- Custom Top Bar -->
     <LinearLayout
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#1A1200"
@@ -17,7 +15,6 @@
         android:paddingEnd="12dp">
 
         <TextView
-            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -26,7 +23,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- City Spinner -->
         <Spinner
             android:id="@+id/spinner_city"
             android:layout_width="wrap_content"
@@ -34,7 +30,6 @@
             android:backgroundTint="#FFD700"
             android:layout_marginEnd="8dp" />
 
-        <!-- Refresh Button -->
         <ImageButton
             android:id="@+id/btn_refresh"
             android:layout_width="40dp"
@@ -43,25 +38,63 @@
             android:src="@android:drawable/ic_menu_rotate"
             android:tint="#FFD700"
             android:contentDescription="Refresh" />
-
     </LinearLayout>
 
-    <!-- Loading Bar -->
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:indeterminate="true"
-        android:progressTint="#FFD700"
         android:indeterminateTint="#FFD700"
         android:visibility="gone" />
 
-    <!-- WebView -->
-    <WebView
-        android:id="@+id/webview"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FF6B35"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/price_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#1A1200"
+                android:padding="4dp" />
+
+            <TextView
+                android:id="@+id/tv_last_updated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#504030"
+                android:textSize="11sp"
+                android:textAlignment="center"
+                android:paddingTop="12dp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Hidden WebView - 1dp, invisible - only used to silently fetch GoodReturns data -->
+    <WebView
+        android:id="@+id/hidden_webview"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="invisible" />
 
 </LinearLayout>
